@@ -89,6 +89,7 @@ window.initMap = () => {
 updateRestaurants = () => {
   const cSelect = document.getElementById('cuisines-select');
   const nSelect = document.getElementById('neighborhoods-select');
+  const restaurantList = document.getElementById('restaurants-list');
 
   const cIndex = cSelect.selectedIndex;
   const nIndex = nSelect.selectedIndex;
@@ -100,6 +101,11 @@ updateRestaurants = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
+      if( restaurants == null || restaurants == '' || restaurants.length == 0 ) {
+        restaurantList.setAttribute('aria-label','No restaurants found');
+      } else {
+        restaurantList.setAttribute('aria-label', ''+restaurants.length+' restaurants found');
+      }
       resetRestaurants(restaurants);
       fillRestaurantsHTML();
     }
@@ -141,24 +147,36 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.setAttribute('role','img');
+  image.setAttribute('alt','Image of restaurant '+restaurant.name+'');
   li.append(image);
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
+  name.setAttribute('role','heading');
   li.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
+  neighborhood.setAttribute('role','text');
   li.append(neighborhood);
 
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
+  address.setAttribute('role','text');
   li.append(address);
+
+  const button = document.createElement('div');
+  button.className = 'restaurant-details-button';
+  button.setAttribute('role','button');
+  button.setAttribute('aria-label','Click to check details of '+restaurant.name);
+  // button.setAttribute('tabindex','0');
+  li.append(button)
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
+  button.append(more)
 
   return li
 }
