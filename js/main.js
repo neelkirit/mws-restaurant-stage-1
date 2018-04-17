@@ -170,7 +170,7 @@ createRestaurantHTML = (restaurant) => {
   button.className = 'restaurant-details-button';
   button.setAttribute('role','button');
   button.setAttribute('aria-label','Click to check details of '+restaurant.name);
-  // button.setAttribute('tabindex','0');
+  button.setAttribute('tabindex','0');
   li.append(button)
 
   const more = document.createElement('a');
