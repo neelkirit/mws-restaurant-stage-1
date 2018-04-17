@@ -104,7 +104,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 
   var reivewCount = 0;
   
-  title.setAttribute('tabindex',"0");
+  // title.setAttribute('tabindex',"0");
 
   if (!reviews) {
     const noReviews = document.createElement('p');
@@ -134,7 +134,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review, tabCount) => {
   const li = document.createElement('li');
-  li.setAttribute('tabindex', "0");
+  // li.setAttribute('tabindex', "0");
   li.setAttribute('aria-label', 'A review by '+review.name+' on '+review.date);
 
   const name = document.createElement('p');
