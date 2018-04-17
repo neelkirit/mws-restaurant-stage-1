@@ -27,11 +27,6 @@ a:hover, a:focus {
 }
 a img{
 	border: none 0px #fff;
-	width: 100%;
-}
-img {
-  display: block;
-  max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: Arial, Helvetica, sans-serif;
@@ -164,7 +159,7 @@ nav h1 a {
   display: block;
   margin: 0;
   max-width: 100%;
-  min-height: 248px;
+  min-height: auto;
   min-width: 100%;
 }
 #restaurants-list li h1 {
